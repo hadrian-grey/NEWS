@@ -152,7 +152,7 @@ else:
         )
     DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
 
-    STATIC_URL='https://foreverinc.github.io/Newsstatic_cdn/'
+    STATIC_URL='https://hadrian-grey.github.io/NEWSSHARE/'
         
 INTERNAL_IPS = [
         "127.0.0.1",
