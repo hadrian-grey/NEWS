@@ -1,47 +1,60 @@
 {% load customtags %}
-<div class="bg-light shadow-lg py-2 px-3">
-    <div class="text-center d-none d-lg-block">
-        <span class="vertical-line" id="date"></span>
-        <span class="ms-3 vertical-line"> <a href="" class="text-decoration-none"> Contact us</a> </span>
-        <span class="ms-3 ps-1 vertical-line"> <a href="" class="text-decoration-none">  Advertise</a> </span>
-        <span class="ms-3 ps-1 vertical-line"> <a href="" class="text-decoration-none"> <i class="fa-brands fa-twitter"></i> </a> </span><hr>
-    </div>
-  <span class="trend ms-1">
-    <span class="text-uppercase fw-bold px-1 py-1 bg-danger text-center text-light shadow-lg" style="width: 300px;">breaking news</span>
-    <marquee class="scrolling-text" width="100%" direction="left">
-      {% breaking_news %}
-    </marquee>
-  </span>
+{% load static %}
+
+<div class=" shadow-lg">
+  <div class="">
+	<div class="btn-group justify-content-center  align-items-center d-none d-lg-flex" role="group" aria-label="Basic mixed styles example">
+		<button type="button" id="date" class="btn btn-light btn-sm rounded-0"></button>
+		<button type="button" class="btn btn-primary btn-sm rounded-0">Contact us</button>
+		<button type="button" class="btn btn-dark btn-sm rounded-0">Advertise</button>
+		<button type="button" class="btn btn-light btn-sm rounded-0">Follow us <a href=""><i class="fa-brands fa-twitter fa-lg"></i></a> </button>
+	</div>
+	
+	<div class="d-flex align-items-center justify-content-center">
+		<span class="text-uppercase fw-bold px-1 py-1 bg-danger text-center text-light shadow-lg" style="width: 300px;">breaking news :</span>
+		<marquee class="scrolling-text" width="100%" direction="left" style="display: flex;">
+      		{% breaking_news %}
+    	</marquee>
+	</div>
+	
+  </div>
 </div>
 
 
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+<nav class="navbar navbar-expand-lg shadow-lg" style="background-color: #050b1f;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><span class="bg-warning p-2">NEWS</span><span class="bg-white text-dark p-2">SHARE</span></a>
+    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'img/logo.png'%}" width="60" alt="..."></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <li class="nav-item me-4">
+          <a class="nav-link" href="#">News</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+		<li class="nav-item me-4">
+          <a class="nav-link" href="#">Notices</a>
+        </li>
+		<li class="nav-item me-4">
+          <a class="nav-link" href="#">Media</a>
+        </li>
+		<li class="nav-item me-4">
+          <a class="nav-link" href="#">Adverts</a>
+        </li>
+		<li class="nav-item me-4">
+          <a class="nav-link" href="#">Jobs</a>
         </li>
         <li class="nav-item dropdown" id="dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categories
           </a>
-          <ul class="dropdown-menu" id="dropdownContent">
+          <ul class="dropdown-menu rounded-0 shadow-lg" id="dropdownContent">
             {% for category in categories %}
             <li><a class="dropdown-item" href="#">{{category}}</a></li>
             {%  endfor %}
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
+        
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control rounded-0" type="search" placeholder="Search news" aria-label="Search">
