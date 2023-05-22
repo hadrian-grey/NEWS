@@ -119,7 +119,7 @@ STATICFILES_DIRS=[
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-if DEBUG==True:
+if DEBUG==False:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -130,15 +130,25 @@ if DEBUG==True:
     STATIC_ROOT=os.path.join(BASE_DIR,'static_cdn')
     
 else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'neondb',
+        'USER': 'theronalliance.dev',
+        'PASSWORD': '6yoOK3HpXStA',
+        'HOST': 'ep-steep-snow-436674.us-east-2.aws.neon.tech',
+        'PORT': '5432',
+    }
+    }
     CLOUDINARY_STORAGE={
-        'CLOUD_NAME': 'dvqvtwria',
-        'API_KEY': '931772247249532',
-        'API_SECRET': 'jOIXfWMEkGVsN4N4IYgZyFGZmvA',
+        'CLOUD_NAME': 'dz5t3boez',
+        'API_KEY': '128332246382333',
+        'API_SECRET': os.environ.get('API_SECRET'),
     }
     cloudinary.config( 
-        cloud_name = "dvqvtwria", 
-        api_key = "931772247249532", 
-        api_secret = "jOIXfWMEkGVsN4N4IYgZyFGZmvA" 
+        cloud_name = "dz5t3boez", 
+        api_key = "128332246382333", 
+        api_secret = os.environ.get('API_SECRET'), 
         )
     DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
 
