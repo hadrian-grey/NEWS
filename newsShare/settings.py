@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
-
+import cloudinary
+from django.contrib.messages import constants as messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -14,7 +15,7 @@ SECRET_KEY = 'django-insecure-4bgmj$_4g^=ntqecal6(-&0h#uk_a-mo_rqo&mdm#lbz3=ym$a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -28,6 +29,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'main',
+    'ckeditor',
+    "debug_toolbar",
+    'cloudinary',
+    'cloudinary_storage',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -38,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'newsShare.urls'
@@ -123,6 +130,39 @@ if DEBUG==True:
     STATIC_ROOT=os.path.join(BASE_DIR,'static_cdn')
     
 else:
-    pass
+    CLOUDINARY_STORAGE={
+        'CLOUD_NAME': 'dvqvtwria',
+        'API_KEY': '931772247249532',
+        'API_SECRET': 'jOIXfWMEkGVsN4N4IYgZyFGZmvA',
+    }
+    cloudinary.config( 
+        cloud_name = "dvqvtwria", 
+        api_key = "931772247249532", 
+        api_secret = "jOIXfWMEkGVsN4N4IYgZyFGZmvA" 
+        )
+    DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
+
+    STATIC_URL='https://foreverinc.github.io/alkestatic_cdn/'
         
-        
+INTERNAL_IPS = [
+        "127.0.0.1",
+    ]   
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'theronalliance.dev@gmail.com'
+EMAIL_HOST_PASSWORD = 'gksznagmjpkzikfg'
+EMAIL_USE_TLS = True
+ 
+ 
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"    

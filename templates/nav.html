@@ -1,5 +1,4 @@
-{% load tz %}
-{% now "Y-m-d H:i:s" as current_datetime %}
+{% load customtags %}
 <div class="bg-light shadow-lg py-2 px-3">
     <div class="text-center d-none d-lg-block">
         <span class="vertical-line" id="date"></span>
@@ -8,10 +7,9 @@
         <span class="ms-3 ps-1 vertical-line"> <a href="" class="text-decoration-none"> <i class="fa-brands fa-twitter"></i> </a> </span><hr>
     </div>
   <span class="trend ms-1">
-    <span class="text-uppercase fw-bold pe-2">Trending:</span>
+    <span class="text-uppercase fw-bold px-1 py-1 bg-danger text-center text-light shadow-lg" style="width: 300px;">breaking news</span>
     <marquee class="scrolling-text" width="100%" direction="left">
-      <span class="me-5 ms-5">With this code, the information in the element with the id info will start scrolling horizontally after one minute and continue scrolling indefinitely.</span>
-      <span class="ms-5">To make the information in the  element with the id info scroll horizontally after one minute, you can use CSS animations and JavaScript. Here's an example implementation:</span>
+      {% breaking_news %}
     </marquee>
   </span>
 </div>
