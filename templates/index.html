@@ -87,18 +87,117 @@
 		</div>
 		{% for new in news %}
 		<div class="col-lg-6">
-			<div class="card mb-3 shadow-lg" style="height: 500px;">
-				<img src="{{new.image.url}}" class="card-img-top theimage" alt="...">
+			<div
+				class="card mb-3 shadow-lg position-relative"
+				style="height: 500px">
+				<img
+					src="{{new.image.url}}"
+					class="card-img-top theimage"
+					alt="..." />
 				<div class="card-body">
-					<h5 class="card-title"><a href="" class="text-decoration-none"><span class="text-bg-warning me-3 text-uppercase px-2">{{new.category}}</span></a><a href="" class="link-main text-uppercase">{{new.title|truncatewords:10}}</a></h5>
-					<p class="card-text">{{new.news|truncatewords:20|safe}}</p>
-					<span class="card-text"><small class="text-body-secondary">{{new.date|timesince}}</small></span>
-					<span class="ms-2">Share: <a href=""><i class="fa-brands fa-facebook fa-lg"></i></a></span>
-					<span class="card-text float-end"><small class="text-body-secondary">reported by: {{new.author}}</small></span>
+					<h5 class="card-title"
+						><span
+							><span
+								class="text-bg-warning me-3 text-decoration-none text-uppercase px-2"
+								>{{new.category}}</span
+							></span
+						><span class="text-uppercase"
+							>{{new.title|truncatewords:10}}</span
+						></h5
+					>
+					<p class="card-text mb-0"
+						>{{new.news|truncatewords:20|safe}}<small
+							class="ms-3 text-muted"
+							>READ MORE</small
+						></p
+					>
+					<span class="card-text"
+						><small class="text-body-secondary"
+							><i class="fa-solid fa-clock me-1"></i
+							>{{new.date|date:'M d, Y'}}</small
+						></span
+					>
 				</div>
+				<a href="pp" class="stretched-link"></a>
 			</div>
 		</div>
 		{% endfor %}
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="section-title mb-5">
+				<h4 class="m-0 text-uppercase font-weight-bold">MEDIA</h4>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					{% for new in news %}
+					<div class="col-md-6 mb-4">
+						<div class="item px-2">
+							<div class="fh5co_news_img">
+								<iframe
+									id="video_2"
+									width="100%"
+									height="200"
+									src="https://www.youtube.com/embed/aM9g4r9QUsM?rel=0&amp;showinfo=0"
+									frameborder="0"
+									allowfullscreen></iframe>
+							</div>
+						</div>
+						<div class="badge text-bg-primary rounded-0 float-end me-2">{{new.date}}</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<!-- Popular News Start -->
+			<div class="mb-3">
+				<div class="section-title mb-0">
+					<h4 class="m-0 text-uppercase font-weight-bold"
+						>Trending News</h4
+					>
+				</div>
+				<div class="bg-white border border-top-0 p-3">
+					{% for new in news %}
+					<div
+						class="d-flex align-items-center bg-white mb-3 position-relative"
+						style="height: 120px">
+						<img
+							class="img-fluid"
+							src="{{new.image.url}}"
+							width="110"
+							alt="" />
+						<div
+							class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+							<div class="mb-2">
+								<a
+									class="badge text-bg-warning rounded-0 text-decoration-none text-uppercase font-weight-semi-bold p-1 mr-2"
+									href=""
+									>{{new.category}}</a
+								>
+								<span class="text-body"
+									><small
+										>{{new.date|timesince}} ago</small
+									></span
+								>
+							</div>
+							<a
+								class="m-0 link-main text-secondary text-uppercase font-weight-bold"
+								style="font-size: 0.8rem"
+								href=""
+								>{{new.title|truncatewords:5}}</a
+							>
+						</div>
+						<a href="" class="stretched-link"></a>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			<!-- Popular News End -->
+		</div>
 	</div>
 </div>
 
