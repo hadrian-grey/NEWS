@@ -1,5 +1,4 @@
-{% extends 'base.html' %} {% block content %}
-{% load static %}
+{% extends 'base.html' %} {% block content %} {% load static %}
 <!-- Main News Slider Start -->
 <div class="container-fluid">
 	<div class="row">
@@ -79,7 +78,7 @@
 			<div class="section-title">
 				<h4 class="m-0 text-uppercase font-weight-bold">Latest News</h4>
 				<a
-					class="text-secondary font-weight-medium text-decoration-none"
+					class="text-secondary fw-bold text-uppercase text-decoration-none"
 					href=""
 					>View All</a
 				>
@@ -87,13 +86,14 @@
 		</div>
 		{% for new in news %}
 		<div class="col-lg-6">
-			<div class="card mb-3 shadow-lg position-relative" style="max-width: 540px;">
+			<div
+				class="card mb-3 shadow-lg position-relative"
+				style="max-width: 540px">
 				<div class="row g-0">
 					<div class="col-md-4 one">
 						<img
 							src="{{new.image.url}}"
 							class="img-fluid rounded-start"
-							
 							alt="..." />
 					</div>
 					<div class="col-md-8">
@@ -106,7 +106,11 @@
 								>{{new.title|truncatewords:10}}</h5
 							>
 							<p class="card-text mb-0 text-muted"
-								>{{new.news|truncatewords:20|safe}} <small class="ms-1 float-end text-uppercase fw-bold text-muted">Read more</small></p
+								>{{new.news|truncatewords:20|safe}}
+								<small
+									class="ms-1 float-end text-uppercase fw-bold text-muted"
+									>Read more</small
+								></p
 							>
 							<p class="card-text"
 								><small class="text-body-secondary"
@@ -130,7 +134,7 @@
 			<div class="section-title">
 				<h4 class="m-0 text-uppercase font-weight-bold">Media</h4>
 				<a
-					class="text-secondary font-weight-medium text-decoration-none"
+					class="text-secondary text-uppercase fw-bold text-decoration-none"
 					href=""
 					>View All</a
 				>
@@ -156,36 +160,82 @@
 						>
 					</div>
 					{% endfor %}
-					<div class="col-12 mt-5 ">
+					<div class="col-12 mt-5">
 						<div class="card rounded-0 shadow-lg">
 							<div class="card-body">
-								<h5>Update us about what is happening in your area</h5>
+								<h5
+									>Update us about what is happening in your
+									area</h5
+								>
 								<form class="row g-3">
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Name</label>
-    <input type="text" class="form-control" id="inputEmail4">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Email/Phone</label>
-    <input type="text" class="form-control" id="inputPassword4">
-  </div>
-  <div class="col-6">
-    <label for="inputAddress" class="form-label">Location</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-6">
-    <label for="inputAddress" class="form-label">Country</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Uganda">
-  </div>
-  
-  <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-  <div class="col-12 text-end">
-    <button type="submit" class="btn btn-primary rounded-0">Send <i class="fa-solid fa-paper-plane"></i></button>
-  </div>
-</form>
+									<div class="col-md-6">
+										<label
+											for="inputEmail4"
+											class="form-label"
+											>Name</label
+										>
+										<input
+											type="text"
+											class="form-control"
+											id="inputEmail4" />
+									</div>
+									<div class="col-md-6">
+										<label
+											for="inputPassword4"
+											class="form-label"
+											>Email/Phone</label
+										>
+										<input
+											type="text"
+											class="form-control"
+											id="inputPassword4" />
+									</div>
+									<div class="col-6">
+										<label
+											for="inputAddress"
+											class="form-label"
+											>Location</label
+										>
+										<input
+											type="text"
+											class="form-control"
+											id="inputAddress"
+											placeholder="1234 Main St" />
+									</div>
+									<div class="col-6">
+										<label
+											for="inputAddress"
+											class="form-label"
+											>Country</label
+										>
+										<input
+											type="text"
+											class="form-control"
+											id="inputAddress"
+											placeholder="Uganda" />
+									</div>
+
+									<div class="mb-3">
+										<label
+											for="exampleFormControlTextarea1"
+											class="form-label"
+											>Message</label
+										>
+										<textarea
+											class="form-control"
+											id="exampleFormControlTextarea1"
+											rows="3"></textarea>
+									</div>
+									<div class="col-12 text-end">
+										<button
+											type="submit"
+											class="btn btn-primary rounded-0"
+											>Send
+											<i
+												class="fa-solid fa-paper-plane"></i
+										></button>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -194,15 +244,22 @@
 		</div>
 		<div class="col-md-4">
 			<!-- Ads Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
-                        </div>
-                        <div class="bg-white text-center border border-top-0 p-3">
-                            <a href=""><img class="img-fluid" src="{% static 'img/news-800x500-1.jpg' %}" alt=""></a>
-                        </div>
-                    </div>
-                    <!-- Ads End -->
+			<div class="mb-3">
+				<div class="section-title mb-0">
+					<h4 class="m-0 text-uppercase font-weight-bold"
+						>Advertisement</h4
+					>
+				</div>
+				<div class="bg-white text-center border border-top-0 p-3">
+					<a href=""
+						><img
+							class="img-fluid"
+							src="{% static 'img/news-800x500-1.jpg' %}"
+							alt=""
+					/></a>
+				</div>
+			</div>
+			<!-- Ads End -->
 			<!-- Popular News Start -->
 			<div class="mb-3">
 				<div class="section-title mb-0">
@@ -245,10 +302,13 @@
 					</div>
 					{% endfor %}
 				</div>
+				<div class="text-center mt-3">
+					<a href="{% url 'upload' %}" class="btn btn-primary">UPLOAD NEWS</a>
+				</div>
 			</div>
 			<!-- Popular News End -->
 		</div>
 	</div>
 </div>
-<br><br>
+<br /><br />
 {%endblock%}
