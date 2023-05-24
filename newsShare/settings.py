@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4bgmj$_4g^=ntqecal6(-&0h#uk_a-mo_rqo&mdm#lbz3=ym$a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -128,7 +128,7 @@ STATICFILES_DIRS=[
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-if DEBUG==True:
+if DEBUG==False:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
