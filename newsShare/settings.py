@@ -146,12 +146,12 @@ else:
     CLOUDINARY_STORAGE={
         'CLOUD_NAME': 'dz5t3boez',
         'API_KEY': '128332246382333',
-        'API_SECRET': os.environ.get('API_SECRET'),
+        'API_SECRET': 'wMKKY9DrQF2bs0aaTHJ4vHs8kQg',
     }
     cloudinary.config( 
         cloud_name = "dz5t3boez", 
         api_key = "128332246382333", 
-        api_secret = os.environ.get('API_SECRET'), 
+        api_secret = 'wMKKY9DrQF2bs0aaTHJ4vHs8kQg' 
         )
     DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
 
