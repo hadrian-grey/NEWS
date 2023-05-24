@@ -5,4 +5,4 @@ class UploadNews(forms.ModelForm):
     
     class Meta:
         model = News
-        fields = ['title', 'image', 'category', 'news', 'headline', 'breaking','trending']
+        fields = ['title', 'image', 'category', 'news', 'headline', 'breaking','trending','author']

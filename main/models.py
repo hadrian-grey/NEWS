@@ -20,7 +20,7 @@ class News(models.Model):
     trending=models.BooleanField(default=False,help_text='Choose if the news should be lsited among the trending news')
     breaking=models.BooleanField(default=False,help_text='Choose if the news should be lsited among the breaking news')
     date=models.DateTimeField(auto_now_add=True)
-    author=models.CharField(max_length=200,null=True)
+    author=models.CharField(max_length=200)
     views=models.IntegerField(default=0)
     
     
@@ -39,7 +39,7 @@ class Advert(models.Model):
 class Comment(models.Model):
     news=models.ForeignKey(News,on_delete=models.CASCADE,related_name='comments')
     comment=models.TextField()
-    name=models.CharField(max_length=200, null=True)
+    name=models.CharField(max_length=200)
     date=models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
