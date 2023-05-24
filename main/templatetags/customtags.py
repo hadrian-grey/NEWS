@@ -1,5 +1,5 @@
 from django import template
-from main.models import News,Category
+from main.models import New,Category
 
 
 register = template.Library()
@@ -8,7 +8,7 @@ register = template.Library()
 
 @register.inclusion_tag('breaking.html',takes_context=False)
 def breaking_news():
-    news=News.objects.filter(breaking=True)
+    news=New.objects.filter(breaking=True)
     return{'news':news}
 
 
@@ -21,5 +21,5 @@ def categories():
 
 @register.inclusion_tag('trending.html',takes_context=False)
 def trending_news():
-    news=News.objects.filter(trending=True).order_by('-id')[:5]
+    news=New.objects.filter(trending=True).order_by('-id')[:5]
     return{'trends':news}

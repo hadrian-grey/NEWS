@@ -1,9 +1,9 @@
 from django.shortcuts import redirect, render
-from .models import Category,News
+from .models import Category,New
 from .forms import UploadNews
 # Create your views here.
 def Homepage(request):
-    news=News.objects.select_related('category').all().order_by('-date')
+    news=New.objects.select_related('category').all().order_by('-date')
     context={
         'news':news
     }
@@ -11,7 +11,7 @@ def Homepage(request):
 
 
 def Detail(request,pk):
-    news=News.objects.get(id=pk)
+    news=New.objects.get(id=pk)
     news.views+=1
     news.save()
     context={

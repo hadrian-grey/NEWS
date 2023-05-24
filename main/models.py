@@ -11,7 +11,7 @@ class Category(models.Model):
         return self.name
     
     
-class News(models.Model):
+class New(models.Model):
     title=models.CharField(max_length=200)
     image=models.ImageField(upload_to='news/')
     category=models.ForeignKey(Category,on_delete=models.SET_NULL,null=True)
@@ -37,7 +37,7 @@ class Advert(models.Model):
 
 
 class Comment(models.Model):
-    news=models.ForeignKey(News,on_delete=models.CASCADE,related_name='comments')
+    news=models.ForeignKey(New,on_delete=models.CASCADE,related_name='comments')
     comment=models.TextField()
     name=models.CharField(max_length=200)
     date=models.DateTimeField(auto_now_add=True)
