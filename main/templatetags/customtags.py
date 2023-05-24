@@ -16,3 +16,10 @@ def breaking_news():
 def categories():
     categories=Category.objects.all()
     return{'categories':categories}
+
+
+
+@register.inclusion_tag('trending.html',takes_context=False)
+def trending_news():
+    news=News.objects.filter(trending=True).order_by('-id')[:5]
+    return{'trends':news}

@@ -1,0 +1,38 @@
+{% for new in trends %}
+					{% if new.trending %}
+					
+					<div
+						class="d-flex align-items-center bg-white mb-3 position-relative"
+						style="height: 120px">
+						<img
+							class="img-fluid"
+							src="{{new.image.url}}"
+							width="110"
+							alt="" style="max-height: 120px;" />
+						<div
+							class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+							<div class="mb-2">
+								<a
+									class="badge text-bg-warning rounded-0 text-decoration-none text-uppercase font-weight-semi-bold p-1 mr-2"
+									href=""
+									>{{new.category}}</a
+								>
+								<span class="text-body"
+									><small
+										>{{new.date|timesince}} ago</small
+									></span
+								>
+							</div>
+							<a
+								class="m-0 link-main text-secondary text-uppercase font-weight-bold"
+								style="font-size: 0.8rem"
+								href=""
+								>{{new.title|truncatewords:5}}</a
+							>
+						</div>
+						<a href="{% url 'detail' new.pk %}" class="stretched-link"></a>
+					</div>
+					
+					{% endif %}
+					{% endfor %}
+					

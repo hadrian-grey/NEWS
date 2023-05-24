@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %} {% block content %} {% load static %}{% load customtags %}
 <!-- Main News Slider Start -->
 <div class="container-fluid">
 	<div class="row">
@@ -25,7 +25,7 @@
 						</div>
 						<a
 							class="h2 link-main m-0 text-white text-uppercase font-weight-bold"
-							href=""
+							href="{% url 'detail' new.pk %}"
 							>{{new.title|truncatewords:7}}</a
 						>
 					</div>
@@ -85,6 +85,7 @@
 			</div>
 		</div>
 		{% for new in news %}
+		{% if forloop.counter <= 4 %}
 		<div class="col-lg-6">
 			<div
 				class="card mb-3 shadow-lg position-relative"
@@ -121,9 +122,10 @@
 						</div>
 					</div>
 				</div>
-				<a href="#" class="stretched-link"></a>
+				<a href="{% url 'detail' new.pk %}" class="stretched-link"></a>
 			</div>
 		</div>
+		{% endif %}
 		{% endfor %}
 	</div>
 </div>
@@ -142,6 +144,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					{% for new in news %}
+					{% if forloop.counter <= 4 %}
 					<div class="col-md-6 mb-4">
 						<div class="item px-2">
 							<div class="fh5co_news_img">
@@ -159,9 +162,10 @@
 							>{{new.date}}</div
 						>
 					</div>
+					{% endif %}
 					{% endfor %}
 					<div class="col-12 mt-5">
-						<div class="card rounded-0 shadow-lg">
+						<div class="card  rounded-0 border-0">
 							<div class="card-body">
 								<h5
 									>Update us about what is happening in your
@@ -268,39 +272,10 @@
 					>
 				</div>
 				<div class="bg-white border border-top-0 p-3">
-					{% for new in news %}
-					<div
-						class="d-flex align-items-center bg-white mb-3 position-relative"
-						style="height: 120px">
-						<img
-							class="img-fluid"
-							src="{{new.image.url}}"
-							width="110"
-							alt="" />
-						<div
-							class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-							<div class="mb-2">
-								<a
-									class="badge text-bg-warning rounded-0 text-decoration-none text-uppercase font-weight-semi-bold p-1 mr-2"
-									href=""
-									>{{new.category}}</a
-								>
-								<span class="text-body"
-									><small
-										>{{new.date|timesince}} ago</small
-									></span
-								>
-							</div>
-							<a
-								class="m-0 link-main text-secondary text-uppercase font-weight-bold"
-								style="font-size: 0.8rem"
-								href=""
-								>{{new.title|truncatewords:5}}</a
-							>
-						</div>
-						<a href="" class="stretched-link"></a>
+					{% trending_news %}
+					<div class="text-center">
+						<button class="btn btn-sm btn-primary rounded-0">More trends</button>
 					</div>
-					{% endfor %}
 				</div>
 				<div class="text-center mt-3">
 					<a href="{% url 'upload' %}" class="btn btn-primary">UPLOAD NEWS</a>

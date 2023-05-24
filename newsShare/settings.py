@@ -34,7 +34,16 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
     'crispy_forms',
+    "crispy_bootstrap5",
 ]
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

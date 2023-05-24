@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load customtags %}
+
+    <!-- News With Sidebar Start -->
+    <div class="container-fluid my-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- News Detail Start -->
+                    <div class="position-relative mb-3">
+                        <img class="img-fluid w-100 detail-image" src="{{new.image.url}}" style="object-fit: cover;height:350px">
+                        <div class="bg-white border border-top-0 p-4">
+                            <div class="mb-3">
+                                <a href="" class="badge text-bg-warning rounded-0 text-decoration-none text-uppercase font-weight-semi-bold p-2 me-2"
+                                >{{new.category}}</a>
+                                <span class="text-body" href="">{{new.date|date:'d M, Y.'}}</span>
+                            </div>
+                            <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">{{new.title}}</h1>
+                            <div>{{new.news|safe}}</div>
+                            
+                            
+                        </div>
+                        <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                            <div class="d-flex align-item-center">
+                                <img class="rounded-circle me-2" src="{% static 'img/author.jpg'%}" width="25" height="25" alt="">
+                                <span class="fst-italic">{{new.author}}</span>
+                            </div>
+                            <div class="d-flex align-item-center">
+                                <span class="ms-3"><i class="far fa-eye me-2"></i>{{new.views}}</span>
+                                <span class="ms-3"><i class="far fa-comment me-2"></i>{{new.comments.all.count}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- News Detail End -->
+
+                    <!-- Comment List Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">{{new.comments.all.count}} Comments</h4>
+                        </div>
+                        <div class="bg-white border border-top-0 p-4">
+                            {% for comment in new.comments.all %}
+                            <div class="media mb-4">
+                                <img src="{% static 'img/user.png'%}" alt="Image" class="img-fluid me-3 mt-1" style="width: 45px;">
+                                <div class="media-body">
+                                    <h6><span class="text-secondary font-weight-bold me-2">{{comment.name}}</span> <small><i>{{comment.date|timesince}} ago</i></small></h6>
+                                    <p>{{comment.comment}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+                    <!-- Comment List End -->
+
+                    <!-- Comment Form Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Leave a comment</h4>
+                        </div>
+                        <div class="bg-white border border-top-0 p-4">
+                            <form>
+                                <div class="form-row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name">Name *</label>
+                                            <input type="text" class="form-control" id="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="email">Email *</label>
+                                            <input type="email" class="form-control" id="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="form-group">
+                                    <label for="message">Message *</label>
+                                    <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group mt-3 ">
+                                    <input type="submit" value="Leave a comment"
+                                        class="btn btn-primary font-weight-semi-bold py-2 px-3">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Comment Form End -->
+                </div>
+
+                <div class="col-lg-4">
+                    
+                    <!-- Ads Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
+                        </div>
+                        <div class="bg-white text-center border border-top-0 p-3">
+                            <a href=""><img class="img-fluid" src="{%static 'img/news-800x500-1.jpg'%}" alt=""></a>
+                        </div>
+                    </div>
+                    <!-- Ads End -->
+
+                    <!-- Popular News Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Trending News</h4>
+                        </div>
+                        <div class="bg-white border border-top-0 p-3">
+                            {% trending_news %}
+                            
+                        </div>
+                    </div>
+                    <!-- Popular News End -->
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- News With Sidebar End -->
+
+
+
+{% endblock %}
