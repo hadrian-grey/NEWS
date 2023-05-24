@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4bgmj$_4g^=ntqecal6(-&0h#uk_a-mo_rqo&mdm#lbz3=ym$a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -37,13 +37,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
 ]
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'height': 300,
-        'width': '100%',
-    },
-}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,7 +122,7 @@ STATICFILES_DIRS=[
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-if DEBUG==False:
+if DEBUG==True:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
