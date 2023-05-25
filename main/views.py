@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import Category,New
+from .models import Category,New,Comment
 from .forms import UploadNews
 # Create your views here.
 def Homepage(request):
@@ -12,6 +12,13 @@ def Homepage(request):
 
 def Detail(request,pk):
     news=New.objects.get(id=pk)
+    if request.POST:
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        comment=request.POST.get('comment')
+        
+        new_comment=Comment.objects.create(comment=comment,name=name,email=email,news=news)
+        new_comment.save()
     news.views+=1
     news.save()
     context={

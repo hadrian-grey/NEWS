@@ -40,6 +40,7 @@ class Comment(models.Model):
     news=models.ForeignKey(New,on_delete=models.CASCADE,related_name='comments')
     comment=models.TextField()
     name=models.CharField(max_length=200)
+    email=models.EmailField(null=True)
     date=models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
