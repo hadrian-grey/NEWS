@@ -1,10 +1,12 @@
 from django.shortcuts import redirect, render
-from .models import New,Comment
+from .models import New,Comment,Media
 # Create your views here.
 def Homepage(request):
     news=New.objects.select_related('category').all().order_by('-date')
+    media=Media.objects.select_related('category').all().order_by('-date')[:4]
     context={
-        'news':news
+        'news':news,
+        'media':media
     }
     return render(request,'index.html',context)
 

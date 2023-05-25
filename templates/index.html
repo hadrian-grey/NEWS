@@ -144,23 +144,27 @@
 			</div>
 			<div class="container-fluid">
 				<div class="row">
-					{% for new in news %}
+					{% for new in media %}
 					{% if forloop.counter <= 4 %}
 					<div class="col-md-6 mb-4">
 						<div class="item px-2">
-							<div class="fh5co_news_img">
-								<iframe
-									id="video_2"
-									width="100%"
-									height="200"
-									src="https://www.youtube.com/embed/aM9g4r9QUsM?rel=0&amp;showinfo=0"
-									frameborder="0"
-									allowfullscreen></iframe>
+							{% if new.video_id %}
+							<div class="">
+								<iframe width="100%" height="200" src="https://www.youtube.com/embed/{{new.video_id}}"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 							</div>
+							{% else %}
+							<div>
+								<video src="{{new.video_file.url}}" controls width="100%" height="200"></video>
+							</div>
+							{% endif %}
 						</div>
 						<div
 							class="badge text-bg-light rounded-0 float-end me-2"
 							>{{new.date}}</div
+						>
+						<div
+							class="badge text-bg-warning rounded-0 float-start me-2"
+							>{{new.category}}</div
 						>
 					</div>
 					{% endif %}

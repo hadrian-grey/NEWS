@@ -47,10 +47,11 @@ class Comment(models.Model):
         return self.name    
     
 class Media(models.Model):
-    youtube_url=models.URLField()
+    video_id=models.CharField(max_length=200,blank=True,null=True,help_text='Only fill in this field if its a youtube video.')
     date=models.DateTimeField(auto_now_add=True)
-    video_file=models.FileField(upload_to='video/',blank=True,null=True)
+    video_file=models.FileField(upload_to='video/',blank=True,null=True,help_text='Use this to upload a video file.')
     name=models.CharField(max_length=200)
+    category=models.ForeignKey(Category,on_delete=models.SET_NULL,null=True)
     
     def __str__(self):
         return self.name
