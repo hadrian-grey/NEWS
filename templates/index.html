@@ -51,7 +51,7 @@
 									href="#"
 									>{{new.category}}</a
 								>
-								<span class="text-white" href="#"
+								<span class="text-white"
 									><small
 										>{{ new.date|date:'M d, Y' }}</small
 									></span
@@ -59,7 +59,7 @@
 							</div>
 							<a
 								class="h6 m-0 link-main text-white text-uppercase font-weight-semi-bold"
-								href="#"
+								href="{% url 'detail' new.pk %}"
 								>{{ new.title|truncatewords:8 }}</a
 							>
 						</div>
