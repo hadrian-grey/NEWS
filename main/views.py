@@ -19,6 +19,7 @@ def Detail(request,pk):
         
         new_comment=Comment.objects.create(comment=comment,name=name,email=email,news=news)
         new_comment.save()
+        return redirect('detail',pk=pk)
     news.views+=1
     news.save()
     context={
