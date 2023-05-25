@@ -28,3 +28,6 @@ def Detail(request,pk):
     }
     return render(request,'detail.html',context)
 
+def privacy(request):
+    return render(request,'privacy.html')
+
