@@ -1,6 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import Category,New,Comment
-from .forms import UploadNews
+from .models import New,Comment
 # Create your views here.
 def Homepage(request):
     news=New.objects.select_related('category').all().order_by('-date')
@@ -27,16 +26,3 @@ def Detail(request,pk):
     }
     return render(request,'detail.html',context)
 
-
-def Upload(request):
-    if request.method == 'POST':
-        form=UploadNews(request.POST,request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    form=UploadNews()
-    
-    context={
-        'form':form
-    }
-    return render(request,'upload.html',context)
