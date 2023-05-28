@@ -65,7 +65,7 @@
 				<a href="" class="badge rounded-0 shadow me-3">{{new.category}}</a>
 			<i class="fa-regular fa-clock fa-xs"></i><span style="font-size: .8rem;">{{new.date}}</span></div>
             <h5 class="card-title text-uppercase">{{ new.title|truncatewords:7 }}</h5>
-            <p class="card-text">{{ new.news|truncatewords:8|safe }}</p>
+            <p class="card-text mt-0">{{ new.news|truncatewords:8|safe }}</p>
             </div>
         </div>
 		<a href="{% url 'detail' new.pk%}" class="stretched-link"></a>
