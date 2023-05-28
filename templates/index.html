@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% load static %}{% load customtags %}
+<script src="https://apis.google.com/js/platform.js"></script>
 <!-- Main News Slider Start -->
 <div class="container-fluid">
     <div class="row">
@@ -85,8 +86,26 @@
                 <h4 class="m-0 text-uppercase font-weight-bold">Media</h4>
                 <a class="text-secondary text-uppercase fw-bold text-decoration-none" href="">View All</a>
             </div>
+			
             <div class="container-fluid">
                 <div class="row">
+					<div class="col-6 mx-auto mt-3 mb-5">
+						<div class="card shadow-lg" style="background: rgb(34,34,57);
+background: -moz-linear-gradient(21deg, rgba(34,34,57,1) 0%, rgba(45,45,70,1) 95%);
+background: -webkit-linear-gradient(21deg, rgba(34,34,57,1) 0%, rgba(45,45,70,1) 95%);
+background: linear-gradient(21deg, rgba(34,34,57,1) 0%, rgba(45,45,70,1) 95%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222239',endColorstr='#2d2d46',GradientType=1);">
+							<div class="card-body">
+								<h4 class="text-light mb-3">Subscribe to our youtube channel</h4>
+								<div class="d-flex align-items-center gap-1 justify-content-between">
+									<p class="text-light">Stay updated with the latest news, documentaries, and insights.</p>
+									<div>
+									<div class="g-ytsubscribe shadow" data-channelid="UC4Lw8ZizzyhyCSOpBbPKZ3A" data-layout="full" data-theme="dark" data-count="default"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
                     {% for new in media %} {% if forloop.counter <= 4 %}
                     <div class="col-md-6 mb-4">
                         <div class="item px-2">
