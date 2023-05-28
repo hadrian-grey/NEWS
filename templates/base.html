@@ -21,7 +21,11 @@
     
     <title>{% block title %}News{% endblock %}</title>
 </head>
-<body class="bg-white">
+<body style="background: rgb(176,177,189);
+background: -moz-linear-gradient(108deg, rgba(176,177,189,1) 0%, rgba(240,239,241,1) 100%);
+background: -webkit-linear-gradient(108deg, rgba(176,177,189,1) 0%, rgba(240,239,241,1) 100%);
+background: linear-gradient(108deg, rgba(176,177,189,1) 0%, rgba(240,239,241,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b0b1bd',endColorstr='#f0eff1',GradientType=1);">
     {% include 'nav.html' %}
 
     {% block content %}
@@ -34,6 +38,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{% static 'js/date.js'%}"></script>
     <script src="{% static 'js/main.js'%}"></script>
-
+    <script src="{% static 'js/whatsapp.js' %}"></script>
 </body>
 </html>
