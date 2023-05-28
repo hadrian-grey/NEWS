@@ -1,210 +1,143 @@
 {% extends 'base.html' %} {% block content %} {% load static %}{% load customtags %}
 <!-- Main News Slider Start -->
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-lg-7 px-0">
-			<div class="owl-carousel main-carousel position-relative">
-				{% for new in news %} {% if new.headline %}
-				<div
-					class="position-relative overflow-hidden"
-					style="height: 500px">
-					<img
-						class="img-fluid h-100"
-						src="{{new.image.url}}"
-						style="object-fit: cover" />
-					<div class="overlay">
-						<div class="mb-2">
-							<a
-								class="badge text-bg-warning text-decoration-none rounded-0 text-uppercase font-weight-semi-bold p-2 mr-2"
-								href=""
-								>{{new.category}}</a
-							>
-							<span class="text-white"
-								>{{ new.date|date:'jS F, Y.' }}</span
-							>
-						</div>
-						<a
-							class="h2 link-main m-0 text-white text-uppercase font-weight-bold"
-							href="{% url 'detail' new.pk %}"
-							>{{new.title|truncatewords:7}}</a
-						>
-					</div>
-				</div>
-				{% endif %} {% endfor %}
-			</div>
-		</div>
-		<div class="col-lg-5 px-0">
-			<div class="row mx-0">
-				{% for new in news %} {% if forloop.counter <= 4 %}
-				<div class="col-md-6 px-0">
-					<div
-						class="position-relative overflow-hidden"
-						style="height: 250px">
-						<img
-							class="img-fluid w-100 h-100"
-							src="{{new.image.url}}"
-							style="object-fit: cover" />
-						<div class="overlay">
-							<div class="mb-2">
-								<a
-									class="badge text-bg-warning text-decoration-none rounded-0 text-uppercase font-weight-semi-bold p-2 mr-2"
-									href="#"
-									>{{new.category}}</a
-								>
-								<span class="text-white"
-									><small
-										>{{ new.date|date:'M d, Y' }}</small
-									></span
-								>
-							</div>
-							<a
-								class="h6 m-0 link-main text-white text-uppercase font-weight-semi-bold"
-								href="{% url 'detail' new.pk %}"
-								>{{ new.title|truncatewords:8 }}</a
-							>
-						</div>
-					</div>
-				</div>
-				{% endif %} {% endfor %}
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-lg-7 px-0">
+            <div class="owl-carousel main-carousel position-relative">
+                {% for new in news %} {% if new.headline %}
+                <div class="position-relative overflow-hidden" style="height: 500px;">
+                    <img class="img-fluid h-100" src="{{new.image.url}}" style="object-fit: cover;" />
+                    <div class="overlay">
+                        <div class="mb-2">
+                            <a class="badge text-bg-warning text-decoration-none rounded-0 text-uppercase font-weight-semi-bold p-2 mr-2" href="">{{new.category}}</a>
+                            <span class="text-white">{{ new.date|date:'jS F, Y.' }}</span>
+                        </div>
+                        <a class="h2 link-main m-0 text-white text-uppercase font-weight-bold" href="{% url 'detail' new.pk %}">{{new.title|truncatewords:7}}</a>
+                    </div>
+                </div>
+                {% endif %} {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-5 px-0">
+            <div class="row mx-0">
+                {% for new in news %} {% if forloop.counter <= 4 %}
+                <div class="col-md-6 px-0">
+                    <div class="position-relative overflow-hidden" style="height: 250px;">
+                        <img class="img-fluid w-100 h-100" src="{{new.image.url}}" style="object-fit: cover;" />
+                        <div class="overlay">
+                            <div class="mb-2">
+                                <a class="badge text-bg-warning text-decoration-none rounded-0 text-uppercase font-weight-semi-bold p-2 mr-2" href="#">{{new.category}}</a>
+                                <span class="text-white"><small>{{ new.date|date:'M d, Y' }}</small></span>
+                            </div>
+                            <a class="h6 m-0 link-main text-white text-uppercase font-weight-semi-bold" href="{% url 'detail' new.pk %}">{{ new.title|truncatewords:8 }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %} {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Main News Slider End -->
 
-<div class="container my-4">
-	<div class="row">
-		<div class="col-12">
-			<div class="section-title shadow-sm">
-				<h4 class="m-0 text-uppercase font-weight-bold">Latest News</h4>
-				<a
-					class="text-secondary fw-bold text-uppercase text-decoration-none"
-					href=""
-					>View All</a
-				>
-			</div>
-		</div>
-		{% for new in news %}
-		{% if forloop.counter <= 4 %}
-		<div class="col-lg-6">
-			<div
-				class="card mb-3  rounded-0 position-relative"
-				style="max-width: 540px">
-				<div class="row g-0">
-					<div class="col-md-4 one">
-						<img
-						style="height: 100%;object-fit: cover;width:100%"
-							src="{{new.image.url}}"
-							class="img-fluid "
-							alt="..." />
-					</div>
-					<div class="col-md-8">
-						<div class="card-body"
-							><span
-								class="text-bg-warning me-3 text-decoration-none text-uppercase px-2"
-								>{{new.category}}</span
-							>
-							<h5 class="card-title"
-								>{{new.title|truncatewords:10}}</h5
-							>
-							<p class="card-text mb-0 text-muted"
-								>{{new.news|truncatewords:20|safe}}
-								<small
-									class="ms-1 float-end text-uppercase fw-bold text-muted"
-									>Read more</small
-								></p
-							>
-							<p class="card-text"
-								><small class="text-body-secondary"
-									><i class="fa-solid fa-clock me-1"></i
-									>{{new.date|date:'M d, Y'}}</small
-								></p
-							>
-						</div>
-					</div>
-				</div>
-				<a href="{% url 'detail' new.pk %}" class="stretched-link"></a>
-			</div>
-		</div>
-		{% endif %}
-		{% endfor %}
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="section-title shadow-sm">
+                <h4 class="m-0 text-uppercase font-weight-bold">Latest News</h4>
+                <a class="text-secondary fw-bold text-uppercase text-decoration-none" href="">View All</a>
+            </div>
+        </div>
+
+<div class="d-flex align-items-center flex-wrap justify-content-evenly gap-4 mt-3">
+  {% for new in news %}
+    {% if forloop.counter <= 4 %}
+	
+      <div class=" cont-div position-relative">
+	
+        <div class="card mb-3 border-0  thecard" >
+			<div class="image-div">
+          <img src="{{ new.image.url }}" style="width: 100%;height:100%" class="card-img-top rounded-0 latest-image" alt="...">
+		  </div>
+          <div class="card-body">
+			
+			<div class="d-flex align-items-center gap-1">
+				<a href="" class="badge rounded-0 shadow me-3">{{new.category}}</a>
+			<i class="fa-regular fa-clock fa-xs"></i><span style="font-size: .8rem;">{{new.date}}</span></div>
+            <h5 class="card-title text-uppercase">{{ new.title|truncatewords:7 }}</h5>
+            <p class="card-text">{{ new.news|truncatewords:8|safe }}</p>
+            </div>
+        </div>
+		<a href="{% url 'detail' new.pk%}" class="stretched-link"></a>
 	</div>
+      
+    {% endif %}
+  {% endfor %}
+	</div>
+
+    </div>
 </div>
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-8">
-			<div class="section-title shadow-sm">
-				<h4 class="m-0 text-uppercase font-weight-bold">Media</h4>
-				<a
-					class="text-secondary text-uppercase fw-bold text-decoration-none"
-					href=""
-					>View All</a
-				>
-			</div>
-			<div class="container-fluid">
-				<div class="row">
-					{% for new in media %}
-					{% if forloop.counter <= 4 %}
-					<div class="col-md-6 mb-4">
-						<div class="item px-2">
-							{% if new.video_id %}
-							<div class="">
-								<iframe width="100%" height="200" src="https://www.youtube.com/embed/{{new.video_id}}"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-							</div>
-							{% endif %}
-						</div>
-						<div
-							class="badge text-bg-light rounded-0 float-end me-2"
-							>{{new.date}}</div
-						>
-						<div
-							class="badge text-bg-warning rounded-0 float-start me-2"
-							>{{new.category}}</div
-						>
-					</div>
-					{% endif %}
-					{% endfor %}
-					
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<!-- Ads Start -->
-			<div class="mb-3">
-				<div class="section-title mb-0">
-					<h4 class="m-0 text-uppercase font-weight-bold"
-						>Advertisement</h4
-					>
-				</div>
-				<div class="bg-white text-center border border-top-0 p-3">
-					<a href=""
-						><img
-							class="img-fluid"
-							src="{% static 'img/news-800x500-1.jpg' %}"
-							alt=""
-					/></a>
-				</div>
-			</div>
-			<!-- Ads End -->
-			<!-- Popular News Start -->
-			<div class="mb-3">
-				<div class="section-title mb-0">
-					<h4 class="m-0 text-uppercase font-weight-bold"
-						>Trending News</h4
-					>
-				</div>
-				<div class="bg-white border border-top-0 p-3">
-					{% trending_news %}
-					<div class="">
-						<button class="btn  rounded-0">More trends</button>
-					</div>
-				</div>
-				
-			</div>
-			<!-- Popular News End -->
-		</div>
-	</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="section-title shadow-sm">
+                <h4 class="m-0 text-uppercase font-weight-bold">Media</h4>
+                <a class="text-secondary text-uppercase fw-bold text-decoration-none" href="">View All</a>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    {% for new in media %} {% if forloop.counter <= 4 %}
+                    <div class="col-md-6 mb-4">
+                        <div class="item px-2">
+                            {% if new.video_id %}
+                            <div class="">
+                                <!-- <iframe
+                                    width="100%"
+                                    height="200"
+                                    src="https://www.youtube.com/embed/{{new.video_id}}"
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen
+                                ></iframe> -->
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="badge text-bg-light rounded-0 float-end me-2">{{new.date}}</div>
+                        <div class="badge text-bg-warning rounded-0 float-start me-2">{{new.category}}</div>
+                    </div>
+                    {% endif %} {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!-- Ads Start -->
+            <div class="mb-3">
+                <div class="section-title mb-0">
+                    <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
+                </div>
+                <div class="bg-white text-center border border-top-0 p-3">
+                    <a href=""><img class="img-fluid" src="{% static 'img/news-800x500-1.jpg' %}" alt="" /></a>
+                </div>
+            </div>
+            <!-- Ads End -->
+            <!-- Popular News Start -->
+            <div class="mb-3">
+                <div class="section-title mb-0">
+                    <h4 class="m-0 text-uppercase font-weight-bold">Trending News</h4>
+                </div>
+                <div class="bg-white border border-top-0 p-3">
+                    {% trending_news %}
+                    <div class="">
+                        <button class="btn rounded-0">More trends</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Popular News End -->
+        </div>
+    </div>
 </div>
-<br /><br />
+<br />
+<br />
 {%endblock%}
