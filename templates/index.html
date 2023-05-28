@@ -104,8 +104,8 @@
                             </div>
                             {% endif %}
                         </div>
-                        <div class="badge text-bg-light rounded-0 float-end me-2">{{new.date}}</div>
-                        <div class="badge text-bg-warning rounded-0 float-start me-2">{{new.category}}</div>
+                        <div class="badge text-bg-light rounded-0 float-end m1-1">{{new.date|timesince|truncatewords:3}}</div>
+                        <div class="badge text-bg-warning rounded-0 float-start me-1">{{new.category}}</div>
                     </div>
                     {% endif %} {% endfor %}
                 </div>
