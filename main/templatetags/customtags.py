@@ -21,5 +21,5 @@ def categories():
 
 @register.inclusion_tag('trending.html',takes_context=False)
 def trending_news():
-    news=New.objects.filter(trending=True).order_by('-id')[:5]
+    news=New.objects.filter(trending=True).order_by('-id')[:2]
     return{'trends':news}
